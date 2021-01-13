@@ -8,7 +8,7 @@ import {
 const Button = (props) => {
     return (
         <TouchableOpacity 
-            style={[ styles.container ]}
+            style={[ styles.container, { width: props.width ?? 300 } ]}
             onPress={ props.onPress }
         >
             <Text style={ styles.text }>
@@ -23,8 +23,7 @@ const styles = StyleSheet.create({
         borderColor: 'black',
         borderWidth: 2,
         borderRadius: 10,
-        marginVertical: 15,
-        width: 300
+        marginVertical: 15
     },
     text: {
         margin: 10,
