@@ -12,6 +12,8 @@ import { Picker } from '@react-native-picker/picker';
 
 import Button from '../components/Button';
 
+import firestore from '@react-native-firebase/firestore';
+
 const CriarAtividadeScreen = () => {
     const [atividade, setAtividade] = useState({
         status: 'Pendente',
@@ -19,6 +21,19 @@ const CriarAtividadeScreen = () => {
         descricao: '',
         usuarioResponsavel: ''
     });
+
+    const ref = firestore().collection('atividades');
+
+    async function criarAtividade() {
+        await ref.add({
+            status: atividade.status,
+            titulo: atividade.titulo,
+            descricao: atividade.descricao,
+            usuarioResponsavel: atividade.usuarioResponsavel
+        })
+        .then(() => {
+        })
+    }
 
     return (
         <ScrollView contentContainerStyle={ styles.container }>
@@ -65,7 +80,7 @@ const CriarAtividadeScreen = () => {
             <Button
                 title='Salvar'
                 width={200}
-                onPress={ () => null }
+                onPress={ () => criarAtividade() }
             />
         </ScrollView>
     )
