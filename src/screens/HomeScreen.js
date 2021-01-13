@@ -6,11 +6,12 @@ import {
 
 import Button from '../components/Button';
 
-const HomeScreen = () => {
+const HomeScreen = ({ navigation }) => {
     return (
         <View style={ styles.container }>
             <Button
                 title='Criar atividade'
+                onPress={ () => navigation.navigate('CriarAtividade') }
             />
 
             <Button
