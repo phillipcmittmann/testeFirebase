@@ -20,7 +20,8 @@ const HomeScreen = ({ navigation }) => {
             />
 
             <Button
-                title='Buscar atividade'
+                fontSize={ 21 }
+                title='Filtrar atividade por status'
             />
         </View>
     )
