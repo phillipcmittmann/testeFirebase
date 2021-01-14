@@ -16,6 +16,7 @@ const HomeScreen = ({ navigation }) => {
 
             <Button
                 title='Modificar atividade'
+                onPress={ () => navigation.navigate('ModificarAtividade') }
             />
 
             <Button
