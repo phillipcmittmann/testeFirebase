@@ -22,7 +22,7 @@ const App = () => {
                 <Stack.Screen name="Home" component={HomeScreen} />
                 <Stack.Screen name="CriarAtividade" component={CriarAtividadeScreen} />
                 <Stack.Screen name="ModificarAtividade" component={ModificarAtividadeScreen} />
-                <Stack.Screen name="FiltrarAtividade" component={FiltrarAtividadesScreen} />
+                <Stack.Screen name="FiltrarAtividades" component={FiltrarAtividadesScreen} />
             </Stack.Navigator>
         </NavigationContainer>
     )
