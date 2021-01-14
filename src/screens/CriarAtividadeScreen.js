@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 import {
     ScrollView,
-    Text,
     TextInput,
     StyleSheet,
-    View
+    View,
+    Alert
 } from 'react-native';
 
 import { Picker } from '@react-native-picker/picker';
@@ -22,17 +22,65 @@ const CriarAtividadeScreen = () => {
         usuarioResponsavel: ''
     });
 
-    const ref = firestore().collection('atividades');
+    // const mountedRef = useRef();
+
+    // const [added, setAdded] = useState(false);
+
+    // useEffect(() => {
+    //     const subscriber = firestore()
+    //         .collection('atividades')
+    //         .onSnapshot(documentSnapshot => {
+    //             documentSnapshot.docChanges().forEach(function(change) { 
+    //                 Alert.alert(
+    //                     'Sucesso!',
+    //                     'Atividade cadastrada com sucesso.',
+    //                     [
+    //                         {
+    //                             text: 'OK'
+    //                         }
+    //                     ]
+    //                 );
+
+    //                 setAtividade({
+    //                     status: 'Pendente',
+    //                     titulo: '',
+    //                     descricao: '',
+    //                     usuarioResponsavel: ''
+    //                 });
+    //             })
+    //         });
+
+    //     setAdded(false);
+
+    //     return () => subscriber();
+    // }, []);
 
     async function criarAtividade() {
-        await ref.add({
-            status: atividade.status,
-            titulo: atividade.titulo,
-            descricao: atividade.descricao,
-            usuarioResponsavel: atividade.usuarioResponsavel
-        })
-        .then(() => {
-        })
+        await firestore()
+            .collection('atividades')
+            .add({
+                status: atividade.status,
+                titulo: atividade.titulo,
+                descricao: atividade.descricao,
+                usuarioResponsavel: atividade.usuarioResponsavel
+            });
+
+            Alert.alert(
+                'Sucesso!',
+                'Atividade cadastrada com sucesso.',
+                [
+                    {
+                        text: 'OK'
+                    }
+                ]
+            );
+
+            setAtividade({
+                status: 'Pendente',
+                titulo: '',
+                descricao: '',
+                usuarioResponsavel: ''
+            });
     }
 
     return (
