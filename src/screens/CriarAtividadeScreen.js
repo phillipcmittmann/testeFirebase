@@ -22,39 +22,6 @@ const CriarAtividadeScreen = () => {
         usuarioResponsavel: ''
     });
 
-    // const mountedRef = useRef();
-
-    // const [added, setAdded] = useState(false);
-
-    // useEffect(() => {
-    //     const subscriber = firestore()
-    //         .collection('atividades')
-    //         .onSnapshot(documentSnapshot => {
-    //             documentSnapshot.docChanges().forEach(function(change) { 
-    //                 Alert.alert(
-    //                     'Sucesso!',
-    //                     'Atividade cadastrada com sucesso.',
-    //                     [
-    //                         {
-    //                             text: 'OK'
-    //                         }
-    //                     ]
-    //                 );
-
-    //                 setAtividade({
-    //                     status: 'Pendente',
-    //                     titulo: '',
-    //                     descricao: '',
-    //                     usuarioResponsavel: ''
-    //                 });
-    //             })
-    //         });
-
-    //     setAdded(false);
-
-    //     return () => subscriber();
-    // }, []);
-
     async function criarAtividade() {
         await firestore()
             .collection('atividades')
