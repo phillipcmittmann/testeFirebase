@@ -6,13 +6,14 @@ import {
     View
 } from 'react-native';
 
-import Button from '../components/Button';
+import Status from '../common/StatusEnum';
+import ItemAtividade from '../components/ItemAtividade';
 
 import { Picker } from '@react-native-picker/picker';
 
 import firestore from '@react-native-firebase/firestore';
 
-function getAtividades() {
+function getAtividades(status) {
     const [atividades, setAtividades] = useState([]);
 
     useEffect(() => {
@@ -20,6 +21,7 @@ function getAtividades() {
 
         firestore()
             .collection('atividades')
+            .where('status', '==', status)
             .onSnapshot(snapshot => {
                 const newAtividades = snapshot.docs.map((doc) => ({
                     id: doc.id,
@@ -36,12 +38,14 @@ function getAtividades() {
 }
 
 const FiltrarAtividadesScreen = () => {
-    const atividades = getAtividades();
+    const [status, setStatus] = useState(Status.PENDENTE);
+
+    const atividades = getAtividades(status);
 
     return (
         <View style={ styles.container }>
             <View style={ styles.containerPicker }>
-            <View style={ styles.picker }>
+                <View style={ styles.picker }>
                     <Picker
                         selectedValue={ status }
                         style={{ height: 50, width: 300 }}
@@ -54,6 +58,23 @@ const FiltrarAtividadesScreen = () => {
                     </Picker>
                 </View>
             </View>
+
+            <View style={ styles.containerList }>
+                <FlatList
+                    data={ atividades }
+                    keyExtractor={ (item, index) => index.toString() }
+                    renderItem={ ({item, index}) => {
+                        return (
+                            <ItemAtividade
+                                item={ item }
+                                index={ index }
+                                onPress={ () => null }
+                            />
+                        )
+                    }}
+                    style={ styles.list }
+                />
+            </View>
         </View>
     )
 }
@@ -65,17 +86,21 @@ const styles = StyleSheet.create({
         backgroundColor: 'white'
     },
     containerPicker: {
-        height: '30%',
         borderBottomColor: 'black',
         borderBottomWidth: StyleSheet.hairlineWidth,
-        marginVertical: 20
     },
     picker: {
         borderColor: 'black',
         borderWidth: 2,
         borderRadius: 5,
         backgroundColor: 'white',
-        marginVertical: 15
+        marginVertical: 25
+    },
+    containerList: {
+        marginBottom: 25
+    },
+    list: {
+        marginTop: 25,
     }
 });
 
