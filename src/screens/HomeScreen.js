@@ -22,6 +22,7 @@ const HomeScreen = ({ navigation }) => {
             <Button
                 fontSize={ 21 }
                 title='Filtrar atividade por status'
+                onPress={ () => navigation.navigate('FiltrarAtividades') }
             />
         </View>
     )

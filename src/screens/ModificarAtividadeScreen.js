@@ -65,7 +65,7 @@ function salvarAtividade(id, status, usuarioResponsavel) {
     }
 }
 
-const ModificarAtividade = () => {
+const ModificarAtividadeScreen = () => {
     const [idSelecionado, setIdSelecionado] = useState(null);
     const [usuarioResponsavel, setUsuarioResponsavel] = useState(null);
     const [status, setStatus] = useState(Status.PENDENTE);
@@ -160,4 +160,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default ModificarAtividade;
+export default ModificarAtividadeScreen;
