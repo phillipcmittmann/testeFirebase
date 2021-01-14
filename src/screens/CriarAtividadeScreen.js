@@ -9,14 +9,14 @@ import {
 } from 'react-native';
 
 import { Picker } from '@react-native-picker/picker';
-
 import Button from '../components/Button';
+import Status from '../common/StatusEnum';
 
 import firestore from '@react-native-firebase/firestore';
 
 const CriarAtividadeScreen = () => {
     const [atividade, setAtividade] = useState({
-        status: 'Pendente',
+        status: Status.PENDENTE,
         titulo: '',
         descricao: '',
         usuarioResponsavel: ''
@@ -43,7 +43,7 @@ const CriarAtividadeScreen = () => {
             );
 
             setAtividade({
-                status: 'Pendente',
+                status: Status.PENDENTE,
                 titulo: '',
                 descricao: '',
                 usuarioResponsavel: ''
@@ -58,10 +58,10 @@ const CriarAtividadeScreen = () => {
                     style={{ height: 50, width: 300 }}
                     onValueChange={ (itemValue) => setAtividade({ ...atividade, status: itemValue }) }
                 >
-                    <Picker.Item label='Pendente' value='Pendente' />
-                    <Picker.Item label='Em andamento' value='Em andamento' />
-                    <Picker.Item label='Finalizada' value='Finalizada' />
-                    <Picker.Item label='Cancelada' value='Cancelada' />
+                    <Picker.Item label={Status.PENDENTE} value={Status.PENDENTE} />
+                    <Picker.Item label={Status.EM_ANDAMENTO} value={Status.EM_ANDAMENTO} />
+                    <Picker.Item label={Status.FINALIZADA} value={Status.FINALIZADA} />
+                    <Picker.Item label={Status.CANCELADA} value={Status.CANCELADA} />
                 </Picker>
             </View>
 
