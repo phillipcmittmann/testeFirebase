@@ -9,6 +9,7 @@ import {
 
 import Button from '../components/Button';
 import ItemAtividade from '../components/ItemAtividade';
+import Status from '../common/StatusEnum';
 
 import { Picker } from '@react-native-picker/picker';
 
@@ -67,7 +68,7 @@ function salvarAtividade(id, status, usuarioResponsavel) {
 const ModificarAtividade = () => {
     const [idSelecionado, setIdSelecionado] = useState(null);
     const [usuarioResponsavel, setUsuarioResponsavel] = useState(null);
-    const [status, setStatus] = useState('Pendente');
+    const [status, setStatus] = useState(Status.PENDENTE);
 
     const changeIdSelecionado = (id) => {
         setIdSelecionado(id);
@@ -102,10 +103,10 @@ const ModificarAtividade = () => {
                         style={{ height: 50, width: 300 }}
                         onValueChange={ (itemValue) => setStatus(itemValue) }
                     >
-                        <Picker.Item label='Pendente' value='Pendente' />
-                        <Picker.Item label='Em andamento' value='Em andamento' />
-                        <Picker.Item label='Finalizada' value='Finalizada' />
-                        <Picker.Item label='Cancelada' value='Cancelada' />
+                        <Picker.Item label={Status.PENDENTE} value={Status.PENDENTE} />
+                        <Picker.Item label={Status.EM_ANDAMENTO} value={Status.EM_ANDAMENTO} />
+                        <Picker.Item label={Status.FINALIZADA} value={Status.FINALIZADA} />
+                        <Picker.Item label={Status.CANCELADA} value={Status.CANCELADA} />
                     </Picker>
                 </View>
                 
