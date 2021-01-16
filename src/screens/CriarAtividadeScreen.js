@@ -94,7 +94,7 @@ const CriarAtividadeScreen = () => {
 
             <Button
                 title='Salvar'
-                width={200}
+                width={ 200 }
                 onPress={ () => criarAtividade() }
             />
         </ScrollView>

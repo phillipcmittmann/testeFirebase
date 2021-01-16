@@ -42,12 +42,22 @@ function salvarAtividade(id, status, usuarioResponsavel) {
     if (id === null) {
         Alert.alert(
             'Erro.',
-            'Selecione uma atividade'
+            'Selecione uma atividade.',
+            [
+                {
+                    text: 'OK'
+                }
+            ]
         )
     } else if (status === null || usuarioResponsavel === null) {
         Alert.alert(
             'Erro.',
-            'Preencha corretamente as informações.'
+            'Preencha corretamente as informações.',
+            [
+                {
+                    text: 'OK'
+                }
+            ]
         )
     } else {
         firestore()
@@ -60,7 +70,12 @@ function salvarAtividade(id, status, usuarioResponsavel) {
 
         Alert.alert(
             'Sucesso!',
-            'Atividade alterada com sucesso.'
+            'Atividade alterada com sucesso.',
+            [
+                {
+                    text: 'OK'
+                }
+            ]
         );
     }
 }
